@@ -1,4 +1,4 @@
-# Version 8.1
+# Version 8.2
 from time import sleep as s
 from random import randint as r
 VIP = True
@@ -83,7 +83,7 @@ def vip_remember(data):
         VIP = True
     else:
         raise Exception("请输入正确秘钥！")
-def print_pro(data):
+def print_pro(data, end = "\n"):
     for i in list(str(data)):
         print(i, end = "")
-    print()
+    print(end = end)
