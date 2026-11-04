@@ -1,4 +1,4 @@
-# Version 7.0
+# Version 8.0
 from time import sleep as s
 from random import randint as r
 VIP = True
@@ -40,7 +40,7 @@ class maxx:
         global a
         a = output
 t = maxx()
-def fuck_ai():
+def ai():
     y, a, b, c = ["Y", "N"], input("人机验证开始，请输入Y/N\n你是机器人"), input("你不是机器人"), input("你绝对可能不会不是机器人")
     print("正在验证...")
     if a not in y or b not in y or c not in y:
@@ -58,7 +58,7 @@ def fuck_ai():
                 f.write("False")
 def max_sb(nums):
     global output, VIP
-    t.m(nums)            # 细节't.m'
+    t.m(nums)
     output = a
     for i in nums:
         if i > output:
@@ -83,3 +83,7 @@ def vip_remember(data):
         VIP = True
     else:
         raise Exception("请输入正确秘钥！")
+def print_pro(data):
+    for i in list(str(data)):
+        print(i, end = "")
+    print()
