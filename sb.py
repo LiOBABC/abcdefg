@@ -1,4 +1,4 @@
-# Version 8.0
+# Version 8.1
 from time import sleep as s
 from random import randint as r
 VIP = True
@@ -40,7 +40,7 @@ class maxx:
         global a
         a = output
 t = maxx()
-def ai():
+def verify_ai():
     y, a, b, c = ["Y", "N"], input("人机验证开始，请输入Y/N\n你是机器人"), input("你不是机器人"), input("你绝对可能不会不是机器人")
     print("正在验证...")
     if a not in y or b not in y or c not in y:
