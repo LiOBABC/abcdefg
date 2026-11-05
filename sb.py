@@ -1,4 +1,4 @@
-# Version 8.2.1
+# Version 9.0
 from time import sleep as s
 from random import randint as r
 VIP = True
@@ -83,7 +83,31 @@ def vip_remember(data):
         VIP = True
     else:
         raise Exception("请输入正确秘钥！")
-def print_pro(data, end = "\n"):
-    for i in str(data):
-        print(i, end = "")
-    print(end = end)
+def len(nums):
+    output = 0
+    for i in nums:
+        output += 1
+def print_pro(*data, end = "\n"):
+    if len(data) == 1:
+        for n in str(data):
+            print(n, end = "")
+        print(" ", end = "")
+    else:
+        for i in data:
+            for n in str(i):
+                print(n, end = "")
+            print(" ", end = "")
+        print(end = end)
+def input_pro(data = None):
+    try:
+        temp = data[-1] if data else ""
+    except:
+        return input(data)
+    try:
+        data_list = list(data)
+        del data_list[-1]
+    except:
+        return input()
+    for i in data_list:
+        print(i, end = "")      # print_pro 函数有未知 bug，不使用
+    return input(temp)
