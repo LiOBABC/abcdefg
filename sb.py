@@ -1,4 +1,4 @@
-# Version 9.0.1
+# Version 9.1
 from time import sleep as s
 from random import randint as r
 VIP = True
@@ -100,6 +100,19 @@ def print_pro(*data, end = "\n"):
             print(" ", end = "")
         print(end = end)
 def input_pro(data = None):
+    def temp_f(data = None):
+        try:
+            temp = data[-1] if data else ""
+        except:
+            return input(data)
+        try:
+            data_list = list(data)
+            del data_list[-1]
+        except:
+            return input()
+        for i in data_list:
+            print(i, end = "")      # print_pro 函数有未知 bug，不使用
+        return input(temp)
     try:
         temp = data[-1] if data else ""
     except:
@@ -110,5 +123,5 @@ def input_pro(data = None):
     except:
         return input()
     for i in data_list:
-        print(i, end = "")      # print_pro 函数有未知 bug，不使用
-    return input(temp)
+        print(i, end = "")
+    return temp_f(temp)
