@@ -1,4 +1,4 @@
-# Version 9.0
+# Version 9.0.1
 from time import sleep as s
 from random import randint as r
 VIP = True
@@ -87,6 +87,7 @@ def len(nums):
     output = 0
     for i in nums:
         output += 1
+    return output
 def print_pro(*data, end = "\n"):
     if len(data) == 1:
         for n in str(data):
