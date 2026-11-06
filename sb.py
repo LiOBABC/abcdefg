@@ -1,7 +1,7 @@
-# Version 9.1
+# Version 9.2
 from time import sleep as s
 from random import randint as r
-VIP = True
+VIP = False
 try:
     with open("data.txt", "r") as f:
         AI = True if f.read() == "True" else False
@@ -16,8 +16,11 @@ def type(data):
         data / 1
         if str(float(data)) == str(data):
             return float
-        return int
+        elif str(int(data)) == str(data):
+            return int
     except:
+        if isinstance(data, list):
+            return list
         return str
 class maxx:
     def e(self, nums):
@@ -89,30 +92,18 @@ def len(nums):
         output += 1
     return output
 def print_pro(*data, end = "\n"):
+    temp = end
     if len(data) == 1:
-        for n in str(data):
+        for n in str(data[0]):
             print(n, end = "")
-        print(" ", end = "")
+        print(end = temp)
     else:
         for i in data:
             for n in str(i):
                 print(n, end = "")
             print(" ", end = "")
-        print(end = end)
+        print(end = temp)
 def input_pro(data = None):
-    def temp_f(data = None):
-        try:
-            temp = data[-1] if data else ""
-        except:
-            return input(data)
-        try:
-            data_list = list(data)
-            del data_list[-1]
-        except:
-            return input()
-        for i in data_list:
-            print(i, end = "")      # print_pro 函数有未知 bug，不使用
-        return input(temp)
     try:
         temp = data[-1] if data else ""
     except:
@@ -123,5 +114,25 @@ def input_pro(data = None):
     except:
         return input()
     for i in data_list:
-        print(i, end = "")
-    return temp_f(temp)
+        print(i, end = "")      # print_pro 函数有未知 bug，不使用
+    return input(temp)
+def if_pro(data):
+    return data if data == True or data == False else None
+def data_pro(data):
+    output = []
+    if type(data) == list:
+        for i in data:
+            output.append(i)
+        return output
+    elif type(data) == str:
+        for i in data:
+            output.append(i)
+        return "".join(output)
+    elif type(data) == int:
+        for i in str(data):
+            output.append(i)
+        return int("".join(output))
+    elif type(data) == float:
+        for i in str(data):
+            output.append(i)
+        return float("".join(output))
