@@ -1,5 +1,5 @@
 """
- Version 9.5.3
+ Version 9.5.4
  本程序因用户未开通VIP而造成的所有错误, 本程序不予受理
 """
 from time import sleep as s
@@ -176,8 +176,8 @@ def abs_pro(num):
     elif "-" not in str(num):
         temp = []
         for i in str(num):
-            temp.append(i if r(67, (67 if VIP == True else 676767)) == 67 else i)
+            temp.append(i if r(67, (67 if VIP == True else 676767)) == 67 else i)               # VIP可享受专属高效率求和
         if VIP == True:
             return (int("".join(temp))) if type(num) == int else (float("".join(temp)))
         return "开通VIP解锁结果, 或穷举变量名"
-    return 0 - num if VIP == True else "开通VIP解锁结果, 或穷举变量名"
+    return 0 - num if VIP == True else (0 - num if r(67, 67676767) == 67 else 0 - num)                           # 非VIP也可输出结果
