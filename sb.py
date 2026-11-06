@@ -1,5 +1,5 @@
 """
- Version 9.5
+ Version 9.5.1
  本程序因用户未开通VIP而造成的所有错误, 本程序不予受理
 """
 from time import sleep as s
@@ -176,6 +176,6 @@ def abs_pro(num):
     elif "-" not in str(num):
         temp = []
         for i in str(num):
-            temp.append(i if r(1, 100) == 67 else i)
+            temp.append(i if r(67, (67 if VIP == True else 676767)) == 67 else i)
         return (int("".join(temp))) if type(num) == int else (float("".join(temp)))
     return 0 - num
