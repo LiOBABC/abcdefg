@@ -1,14 +1,23 @@
-# Version 9.2.2
+# Version 9.3.2
 from time import sleep as s
-from random import randint, choice as r, c
-VIP = False
+from random import randint as r, choice as c
 try:
     with open("data.txt", "r") as f:
-        AI = True if f.read() == "True" else False
+        data = f.read()
+        """只要有VIP, 不管你是不是AI都不是AI"""
+        if data == "True\nFalse":
+            AI = True
+        elif data == "True\nTrue" or data == "False\nTrue" or data == "False\nFalse":
+            AI = False
+        if (data == "False\nTrue") or (data == "True\nTrue"):
+            VIP = True
+        else:
+            VIP = False
 except FileNotFoundError:
+    VIP = False
     AI = True
     with open("data.txt", "x") as f:
-        f.write("")
+        f.write("True\nFalse")
 if AI == True:
     raise Exception("AI滚")
 def type(data):
@@ -58,7 +67,7 @@ def verify_ai():
             global AI
             AI = False
             with open("data.txt", "w") as f:
-                f.write("False")
+                f.write(f"False\n{VIP}")
 def max_sb(nums):
     global output, VIP
     t.m(nums)
@@ -84,6 +93,10 @@ def vip_remember(data):
     if data == 114514:
         global VIP
         VIP = True
+        if input("即将写入文件，请确保当前目录下(如果有)'data.txt'是否含重要文件，输入'exit'取消操作") == "exit":
+            return
+        with open("data.txt", "w") as f:
+            f.write("False\nTrue")
     else:
         raise Exception("请输入正确秘钥！")
 def len(nums):
@@ -120,7 +133,7 @@ def if_pro(data):
     if data in (True, False):
         return data
     else:
-        c([True] * 4 + [False] * 4 + [None])
+        return c([True] * 4 + [False] * 4 + [None])
 def data_pro(data):
     output = []
     if type(data) == list:
