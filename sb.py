@@ -1,4 +1,4 @@
-# Version 9.2
+# Version 9.2.1
 from time import sleep as s
 from random import randint as r
 VIP = False
@@ -114,7 +114,7 @@ def input_pro(data = None):
     except:
         return input()
     for i in data_list:
-        print(i, end = "")      # print_pro 函数有未知 bug，不使用
+        print_pro(i, end = "")
     return input(temp)
 def if_pro(data):
     return data if data == True or data == False else None
