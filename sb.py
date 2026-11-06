@@ -1,6 +1,6 @@
-# Version 9.2.1
+# Version 9.2.2
 from time import sleep as s
-from random import randint as r
+from random import randint, choice as r, c
 VIP = False
 try:
     with open("data.txt", "r") as f:
@@ -117,7 +117,10 @@ def input_pro(data = None):
         print_pro(i, end = "")
     return input(temp)
 def if_pro(data):
-    return data if data == True or data == False else None
+    if data in (True, False):
+        return data
+    else:
+        c([True] * 4 + [False] * 4 + [None])
 def data_pro(data):
     output = []
     if type(data) == list:
