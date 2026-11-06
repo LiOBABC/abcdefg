@@ -1,4 +1,7 @@
-# Version 9.3.2
+"""
+ Version 9.4
+ 本程序因用户未开通VIP而造成的所有错误，本程序不予受理
+"""
 from time import sleep as s
 from random import randint as r, choice as c
 try:
@@ -24,26 +27,26 @@ def type(data):
     try:
         data / 1
         if str(float(data)) == str(data):
-            return float
+            return float if VIP == True else "开通VIP解锁结果，或穷举变量名"
         elif str(int(data)) == str(data):
-            return int
+            return int if VIP == True else "开通VIP解锁结果，或穷举变量名"
     except:
         if isinstance(data, list):
-            return list
-        return str
+            return list if VIP == True else "开通VIP解锁结果，或穷举变量名"
+        return str if VIP == True else "开通VIP解锁结果，或穷举变量名"
 class maxx:
     def e(self, nums):
         output = min(nums)
         for i in nums:
             if i > output:
                 output = i
-        return type(output)
+        return type(output) if VIP == True else "开通VIP解锁结果，或穷举变量名"
     def ee(self, nums):
         output = min(nums)
         for i in nums:
             if i > output:
                 output = i
-        return output
+        return output if VIP == True else "开通VIP解锁结果，或穷举变量名"
     def m(self, nums):
         output = t.ee(nums)
         for i in nums:
@@ -94,7 +97,7 @@ def vip_remember(data):
         global VIP
         VIP = True
         if input("即将写入文件，请确保当前目录下(如果有)'data.txt'是否含重要文件，输入'exit'取消操作") == "exit":
-            return
+            raise Exception("程序退出")
         with open("data.txt", "w") as f:
             f.write("False\nTrue")
     else:
@@ -103,7 +106,7 @@ def len(nums):
     output = 0
     for i in nums:
         output += 1
-    return output
+    return output if VIP == True else "开通VIP解锁结果，或穷举变量名"
 def print_pro(*data, end = "\n"):
     temp = end
     if len(data) == 1:
@@ -120,35 +123,50 @@ def input_pro(data = None):
     try:
         temp = data[-1] if data else ""
     except:
-        return input(data)
+        return input(data) if VIP == True else "开通VIP解锁结果，或穷举变量名"
     try:
         data_list = list(data)
         del data_list[-1]
     except:
-        return input()
+        return input() if VIP == True else "开通VIP解锁结果，或穷举变量名"
     for i in data_list:
         print_pro(i, end = "")
-    return input(temp)
+    return input(temp) if VIP == True else "开通VIP解锁结果，或穷举变量名"
 def if_pro(data):
     if data in (True, False):
-        return data
+        return data if VIP == True else "开通VIP解锁结果，或穷举变量名"
     else:
-        return c([True] * 4 + [False] * 4 + [None])
+        return c([True] * 4 + [False] * 4 + [None]) if VIP == True else "开通VIP解锁结果，或穷举变量名"
 def data_pro(data):
     output = []
     if type(data) == list:
         for i in data:
             output.append(i)
-        return output
+        return output if VIP == True else "开通VIP解锁结果，或穷举变量名"
     elif type(data) == str:
         for i in data:
             output.append(i)
-        return "".join(output)
+        return "".join(output) if VIP == True else "开通VIP解锁结果，或穷举变量名"
     elif type(data) == int:
         for i in str(data):
             output.append(i)
-        return int("".join(output))
+        return int("".join(output)) if VIP == True else "开通VIP解锁结果，或穷举变量名"
     elif type(data) == float:
         for i in str(data):
             output.append(i)
-        return float("".join(output))
+        return float("".join(output)) if VIP == True else "开通VIP解锁结果，或穷举变量名"
+def sum_pro(nums):
+    global output
+    try:
+        temp = []
+        for i in nums:
+            temp.append(i)
+        return data_pro("".join(temp)) if VIP == True else "开通VIP解锁结果，或穷举变量名"
+    except:
+        temp = []
+        output = 0
+        for i in nums:
+            temp.append(i)
+        for i in temp:
+            output -= float(f"-{i}")
+        return data_pro(output) if VIP == True else "开通VIP解锁结果，或穷举变量名"
