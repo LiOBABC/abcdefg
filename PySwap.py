@@ -1,5 +1,5 @@
 """
- PySwap Version Beta 9.8.2
+ PySwap Version 9.8.2
  更新日志:
  修复了已知 BUG。
 
