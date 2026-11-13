@@ -218,4 +218,3 @@ def round_pro(num, n = None):
         if int(temp[1][0]) >= 5:
             return z + 1 if VIP else V
         return z if VIP else V
-print(round_pro(1777, -2))
