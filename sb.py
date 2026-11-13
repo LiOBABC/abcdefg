@@ -1,10 +1,14 @@
 """
- Version Beta 9.6.1 性能优化
+ Version Beta 9.7.1 更新日志:
+ 1.修复致命 BUG , 发现者 DeepSeek , 现给予 0 Token 奖励！
+ 2.进一步完善 round_pro 函数
+ 3.优化项目结构
  本程序因用户未开通VIP而造成的所有错误, 本程序不予受理
 """
 from time import sleep as s
 from random import randint as r, choice as c
 V = "开通VIP解锁结果"
+YB = "请问您有病吗?"
 try:
     with open("data.txt", "r") as f:
         data = f.read()
@@ -24,7 +28,7 @@ except FileNotFoundError:
         f.write("True\nFalse")
 if AI:
     raise Exception("AI滚")
-def type(data):
+def type_pro(data):
     try:
         data / 1
         if str(float(data)) == str(data):
@@ -35,44 +39,76 @@ def type(data):
         if isinstance(data, list):
             return list if VIP else V
         return str if VIP else V
-class maxx:
-    def e(self, nums):
-        output = min(nums)
-        for i in nums:
-            if i > output:
-                output = i
-        return type(output) if VIP else V
-    def ee(self, nums):
-        output = min(nums)
-        for i in nums:
-            if i > output:
-                output = i
-        return output if VIP else V
-    def m(self, nums):
-        output = t.ee(nums)
-        for i in nums:
-            if i < output:
-                output = i
-        global a
-        a = output
-t = maxx()
-def verify_ai():
-    y, a, b, c = ["Y", "N"], input("人机验证开始, 请输入Y/N\n你是机器人"), input("你不是机器人"), input("你绝对可能不会不是机器人")
-    print("正在验证...")
-    if a not in y or b not in y or c not in y:
-        return "请问您有病吗？"
+def len_pro(datas):
+    output = 0
+    for i in datas:
+        output += 1
+    return output if VIP else "开通VIP解锁结果"
+def print_pro(*data, end = "\n"):
+    temp = end
+    if len_pro(data) == 1:
+        for n in str(data[0]):
+            print(n, end = "")
+        print(end = temp)
     else:
-        s(r(50, 150) / 100)
+        for i in data:
+            for n in str(i):
+                print(n, end = "")
+            print(end = " ")
+        print(end = temp)
+def input_pro(data = None):
+    try:
+        temp = data[-1] if data else ""
+    except:
+        return input(data) if VIP else V
+    try:
+        data_list = list(data)
+        del data_list[-1]
+    except:
+        return input() if VIP else V
+    for i in data_list:
+        print_pro(i, end = "")
+    return input(temp) if VIP else V
+def verify_ai():
+    y, a, b, c = ["Y", "N"], input_pro("人机验证开始, 请输入Y/N\n你是机器人:"), input_pro("你不是机器人:"), input_pro("你绝对可能不会不是机器人:")
+    print_pro("正在验证...")
+    sleep_time = r(50, 150) / 100
+    if a not in y or b not in y or c not in y:
+        s(sleep_time)
+        return YB
+    else:
+        s(sleep_time)
         if True if (a == "Y" or b == "N" or c == "Y") else False:
             raise Exception("AI滚")
-        elif input("即将写入文件, 请确保当前目录下(如果有)'data.txt'是否含重要文件, 输入'exit'取消操作") == "exit":
+        elif input_pro("即将写入文件, 请确保当前目录下(如果有)'data.txt'是否含重要文件, 输入'exit'取消操作") == "exit":
             return
         else:
             global AI
             AI = False
             with open("data.txt", "w") as f:
                 f.write(f"False\n{VIP}")
-def max_sb(nums):
+def max_pro(nums):
+    class maxx:
+        def e(self, nums):
+            output = min(nums)
+            for i in nums:
+                if i > output:
+                    output = i
+            return type_pro(output) if VIP else V
+        def ee(self, nums):
+            output = min(nums)
+            for i in nums:
+                if i > output:
+                    output = i
+            return output if VIP else V
+        def m(self, nums):
+            output = t.ee(nums)
+            for i in nums:
+                if i < output:
+                    output = i
+            global a
+            a = output
+    t = maxx()
     global output, VIP
     t.m(nums)
     output = a
@@ -97,62 +133,32 @@ def vip_remember(data):
     if data == 114514:
         global VIP
         VIP = True
-        if input("即将写入文件, 请确保当前目录下(如果有)'data.txt'是否含重要文件, 输入'exit'取消操作") == "exit":
+        if input_pro("即将写入文件, 请确保当前目录下(如果有)'data.txt'是否含重要文件, 输入'exit'取消操作") == "exit":
             raise Exception("程序退出")
         with open("data.txt", "w") as f:
             f.write("False\nTrue")
     else:
         raise Exception("请输入正确秘钥！")
-def len(nums):
-    output = 0
-    for i in nums:
-        output += 1
-    return output if VIP else "开通VIP解锁结果"
-def print_pro(*data, end = "\n"):
-    temp = end
-    if len(data) == 1:
-        for n in str(data[0]):
-            print(n, end = "")
-        print(end = temp)
-    else:
-        for i in data:
-            for n in str(i):
-                print(n, end = "")
-            print(" ", end = "")
-        print(end = temp)
-def input_pro(data = None):
-    try:
-        temp = data[-1] if data else ""
-    except:
-        return input(data) if VIP else V
-    try:
-        data_list = list(data)
-        del data_list[-1]
-    except:
-        return input() if VIP else V
-    for i in data_list:
-        print_pro(i, end = "")
-    return input(temp) if VIP else V
 def if_pro(data):
     if data in (True, False):
-        return data if VIP else V
+        return data == True if VIP else V
     else:
         return c([True] * 4 + [False] * 4 + [None]) if VIP else V
 def data_pro(data):
     output = []
-    if type(data) == list:
+    if type_pro(data) == list:
         for i in data:
             output.append(i)
         return output if VIP else V
-    elif type(data) == str:
+    elif type_pro(data) == str:
         for i in data:
             output.append(i)
         return "".join(output) if VIP else V
-    elif type(data) == int:
+    elif type_pro(data) == int:
         for i in str(data):
             output.append(i)
         return int("".join(output)) if VIP else V
-    elif type(data) == float:
+    elif type_pro(data) == float:
         for i in str(data):
             output.append(i)
         return float("".join(output)) if VIP else V
@@ -172,17 +178,43 @@ def sum_pro(nums):
             output -= float(f"-{i}")
         return data_pro(output) if VIP else V
 def abs_pro(num):
-    if type(num) in [str, list]:
-        return "请问您有病吗?"
+    if type_pro(num) in [str, list]:
+        return YB
     elif "-" not in str(num):
         temp = []
         for i in str(num):
             temp.append(i if r(67, (67 if VIP else 676767)) == 67 else i)               # VIP 可享受专属高效率求和
         if VIP :
-            return (int("".join(temp))) if type(num) == int else (float("".join(temp)))
+            return (int("".join(temp))) if type_pro(num) == int else (float("".join(temp)))
         return V
     return 0 - num if VIP else (0 - num if r(67, 67676767) == 67 else 0 - num)                           # 非 VIP 也可输出结果，但速度较慢
-        if "." not in str(num) and n < 0:
-            temp = abs(n)
+def fs(num):
+    return abs_pro(num) != num if VIP else V
+def round_pro(num, n = None):
+    if (type_pro(num) in [str, list]) or (not num) or (len_pro(str(num).split(".")) > 2):
+        return YB                # “您有病”起手，天下我有
+    elif not n:
+        if "." not in str(num):
+            return YB
+        temp = str(num).split(".")
+        z = int(temp[0])
+        if int(temp[1][0]) >= 5:
+            return z + 1 if VIP else V
+        return z if VIP else V
     else:
-        pass
+        if "." not in str(num):
+            temp = str(num).split(".")
+            z = int(temp[0])
+            p = int(z[n + 1])
+            z -= p
+            if int(temp[1][0]) >= 5:
+                return z + 10 if VIP else V
+            elif n < 0:
+                return z if VIP else V
+            return YB
+        # TODO:下方代码未完善
+        temp = str(num).split(".")
+        z = int(temp[0])
+        if int(temp[1][0]) >= 5:
+            return z + 1 if VIP else V
+        return z if VIP else V
