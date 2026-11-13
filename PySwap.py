@@ -1,11 +1,10 @@
 """
- PySwap Version Beta 9.8.1
+ PySwap Version Beta 9.8.2
  更新日志:
- 修复了非 VIP 用户体验过好的 BUG。
- 添加了退款功能，如果您认为 VIP 体验不好可以退款。
+ 修复了已知 BUG。
 
  免责声明:
- 本程序从来未说明退款即退还 VIP 费用，在极小概率时程序受不可抗力因素被关闭，本程序不予受理
+ 本程序从未说明退款即退还 VIP 费用，在极小概率时程序受不可抗力因素被关闭，本程序不予受理
  本程序因用户未开通VIP而造成的所有错误, 本程序均不予受理
 """
 from time import sleep as s
@@ -13,7 +12,7 @@ from random import randint as r, choice as c
 V = "开通 VIP 解锁结果"
 try:
     with open("data.txt", "r") as f:
-        data = f.read.split("\n")
+        data = f.read().split("\n")
         VIP = True if data[1] == "True" else False
         AI = True if data[0] == "True" and data[1] == "False" else False
 except FileNotFoundError:
