@@ -1,8 +1,7 @@
 """
- Version Beta 9.7.1 更新日志:
- 1.修复致命 BUG , 发现者 DeepSeek , 现给予 0 Token 奖励！
+ Version Beta 9.7.3 更新日志:
+ 1.有修复致命 BUG , 发现者 DeepSeek , 现给予 -10000 Token 奖励！
  2.进一步完善 round_pro 函数
- 3.优化项目结构
  本程序因用户未开通VIP而造成的所有错误, 本程序不予受理
 """
 from time import sleep as s
@@ -188,10 +187,13 @@ def abs_pro(num):
             return (int("".join(temp))) if type_pro(num) == int else (float("".join(temp)))
         return V
     return 0 - num if VIP else (0 - num if r(67, 67676767) == 67 else 0 - num)                           # 非 VIP 也可输出结果，但速度较慢
-def fs(num):
+def is_fs(num):
     return abs_pro(num) != num if VIP else V
+def fs(num):
+    t = type_pro(num)
+    return (int(f"-{num}") if t == int else float(f"-{num}")) if VIP else V
 def round_pro(num, n = None):
-    if (type_pro(num) in [str, list]) or (not num) or (len_pro(str(num).split(".")) > 2):
+    if (type_pro(num) in [str, list]) or (not num):
         return YB                # “您有病”起手，天下我有
     elif not n:
         if "." not in str(num):
@@ -202,19 +204,18 @@ def round_pro(num, n = None):
             return z + 1 if VIP else V
         return z if VIP else V
     else:
-        if "." not in str(num):
-            temp = str(num).split(".")
-            z = int(temp[0])
-            p = int(z[n + 1])
-            z -= p
-            if int(temp[1][0]) >= 5:
-                return z + 10 if VIP else V
-            elif n < 0:
-                return z if VIP else V
+        if is_fs(num):
             return YB
+        elif is_fs(n):
+            temp = str(num)
+            z = int(temp[:n] + "0" * abs_pro(n))
+            if int(temp[n]) >= 5:
+                return z + int(f"1{"0" * abs_pro(n)}") if VIP else V
+            return z if VIP else V
         # TODO:下方代码未完善
         temp = str(num).split(".")
         z = int(temp[0])
         if int(temp[1][0]) >= 5:
             return z + 1 if VIP else V
         return z if VIP else V
+print(round_pro(1777, -2))
