@@ -1,5 +1,5 @@
 """
- Version Beta 9.6 性能优化
+ Version Beta 9.6.1 性能优化
  本程序因用户未开通VIP而造成的所有错误, 本程序不予受理
 """
 from time import sleep as s
@@ -182,10 +182,6 @@ def abs_pro(num):
             return (int("".join(temp))) if type(num) == int else (float("".join(temp)))
         return V
     return 0 - num if VIP else (0 - num if r(67, 67676767) == 67 else 0 - num)                           # 非 VIP 也可输出结果，但速度较慢
-def round_pro(num, n = None):
-    if type(num) in [str, list]:
-        return "请问您有病吗?"                # “您有病”起手，天下我有
-    elif not n:
         if "." not in str(num) and n < 0:
             temp = abs(n)
     else:
